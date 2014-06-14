@@ -1,3 +1,3 @@
-every 2.5.minutes do
+every 2.minutes do
   rake "send_alerts"
 end
