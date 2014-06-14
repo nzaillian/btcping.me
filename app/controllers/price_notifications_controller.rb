@@ -8,7 +8,7 @@ class PriceNotificationsController < ApplicationController
   def index
     if sort_param.blank?
       flash.keep
-      redirect_to(price_notifications_path(sort: 'created_at')) and return
+      redirect_to(price_notifications_path(sort: '-created_at')) and return
     end
 
     @price_notifications = current_user.price_notifications.order(sort_order).page(page_param)
