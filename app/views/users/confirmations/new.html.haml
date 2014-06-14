@@ -1,0 +1,13 @@
+- content_for :content do
+  .row
+    .col-xs-4.col-xs-offset-4.session-box
+      %h4 Resend confirmation
+      = semantic_form_for resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post } do |f|
+        = f.semantic_errors
+        = f.inputs do
+          = f.input :email
+        
+        = f.actions do
+          = f.action :submit, label: "Resend Confirmation Instructions", button_html: {data: {disable_with: "Loading..."}, class: "btn btn-info"}
+
+      = render "users/shared/links"

@@ -1,0 +1,25 @@
+- merge_params = {}
+
+- if params[:next].present?
+  - merge_params[:next] = params[:next]          
+
+.row
+  .col-xs-4.col-xs-offset-4
+    #registration-box.panel.panel-default.session-box
+      .panel-heading
+        %h3.panel-title Create Your Account
+      .panel-body    
+        = semantic_form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+          = f.semantic_errors
+          = f.inputs do
+            = f.input :email
+            = f.input :password
+            = f.input :password_confirmation, label: "Confirm password", required: true
+            = f.hidden_field :property_owner, value: true
+            = hidden_field_tag "next", params[:next]
+          = f.actions do
+            = f.action :submit, label: "Sign Up", button_html: {data: {disable_with: "Signing Up..."}, class: "btn btn-primary pull-right"}
+
+    %p.text-muted.text-center.prompt
+      Already have an account?
+      = link_to "Sign in", new_user_session_path(merge_params)

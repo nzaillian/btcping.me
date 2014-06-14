@@ -1,0 +1,19 @@
+%h1 Bitcoin Price Alert
+
+This is an automated notification from BTCPing.me informing you that the criteria of one of your notifications have been met:
+
+%h3 Notification Details
+
+.breaker.sm
+
+%dl.dl-horizontal
+  - dir = @price_notification.direction == :below ? 'Goes below' : 'Goes Above'
+  %dt Notify When Price
+  %dd= "#{dir} #{number_to_currency(@price_notification.price)}"
+  %dt Current Market Price
+  %dd= "#{number_to_currency @current_price} (#{@price_notification.human_exchange_name})"
+
+%p.text-muted
+  - url = edit_price_notification_path(@price_notification, only_path: false)
+  You can edit or cancel this notification by following this link: 
+  = link_to url, url

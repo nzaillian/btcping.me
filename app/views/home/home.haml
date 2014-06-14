@@ -1,0 +1,12 @@
+- cache do
+  #home-home
+    .row
+      .col-xs-6.col-xs-offset-3.text-center
+        .lead
+          %h2
+            :erb
+              Simple, <span class='highlight'>free</span>, Bitcoin price alerts
+
+    .row
+      .col-xs-4.col-xs-offset-4
+        = link_to 'Create an Alert Now', price_notifications_path, class: 'btn btn-primary btn-lg btn-block', id: 'home-button'

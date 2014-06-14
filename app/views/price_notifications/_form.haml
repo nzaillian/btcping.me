@@ -1,0 +1,22 @@
+.row
+  .col-md-4.col-md-offset-4.col-xs-10.col-xs-offset-1
+    = semantic_form_for @price_notification, html: {id: 'price-notification-form'} do |f|  
+      #price-notification.panel.panel-default
+        - verb = @price_notification.new_record? ? 'Create' : 'Update'
+        .panel-heading
+          %h3.panel-title= "#{verb} Price Notification"
+        .panel-body
+          = f.inputs do
+            = f.input :direction, as: :select, label: 'Notify me when', collection: {'Price goes below' => :below, 'Price goes above' => :above}, include_blank: false
+
+            = f.input :price, as: :string, prepend_content: content_tag(:span, '$', class: 'input-group-addon')
+
+            = f.input :exchange, as: :select, label: 'On the Exchange', collection: {'Bitstamp.com' => :bitstamp, 'Coinbase.com' => :coinbase}, include_blank: false
+
+          = f.actions do
+            - if !@price_notification.new_record?
+              = link_to nil, href: price_notification_path(@price_notification), class: 'delete-link text-danger pull-left', data: {method: :delete, confirm: 'Are you sure you want to delete this notification?'} do
+                %i.glyphicon.glyphicon-trash
+                Delete Notification
+
+            = f.action :submit, label: 'Save Notification', button_html: {data: {disable_with: 'Saving...'}, class: 'btn btn-default pull-right'}

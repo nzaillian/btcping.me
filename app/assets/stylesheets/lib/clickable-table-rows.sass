@@ -1,0 +1,11 @@
+@import 'common/common'
+
+table.clickable-rows
+  tbody
+    tr:hover
+      cursor: pointer
+      background-color: lighten($green_color, 26%)
+
+    tr.empty:hover
+      cursor: default
+      background-color: inherit

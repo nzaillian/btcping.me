@@ -1,0 +1,62 @@
+//= require ./lib/manifest
+//= require_tree ./home
+//= require_tree ./price_notifications
+//= require_tree ./users
+//= require_self
+
+@import 'common/common'
+
+body
+  border-top: 5px solid $green_color
+  font-family: 'Open Sans', sans-serif
+
+#logo
+  width: 286px
+  color: $green_color
+  font-size: 70px
+  padding: 7px 15px
+  height: 78px
+
+  i, .logo-rest
+    display: block
+    float: left
+
+  .logo-rest
+    font-size: 46px
+    font-family: 'Dosis', sans-serif
+    font-weight: 800
+    line-height: 78px
+
+#main-container
+
+.highlight
+  color: $green_color  
+
+ul#account-dropdown
+  margin-right: 20px
+  font-size: 17px
+
+  li a, &.open li a
+    &.dropdown-toggle
+      color: $green_color
+      cursor: pointer
+
+      &, &:hover, &:focus, &:active
+        background-color: inherit
+
+.clear
+  width: 100%
+  clear: both
+
+.breaker
+  width: 100%
+  clear: both
+  height: 14px
+
+  &.md
+    height: 20px
+
+.mock-input
+  padding: 0
+  border: none
+  +box-shadow(none)

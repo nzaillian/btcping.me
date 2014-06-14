@@ -1,0 +1,36 @@
+-if flash and flash[:notice].present?
+  .row.alert-row.fade.in
+    .col-xs-8.col-xs-offset-2
+      .alert.alert-success.flash
+        %a{:class => 'close', :data => {:dismiss => 'alert', :target => ".alert-row"}}
+          &times;
+        .inner-text
+          =flash[:notice]
+
+-if flash and flash[:alert].present?
+  .row.alert-row.fade.in
+    .col-xs-8.col-xs-offset-2
+      .alert.alert-danger.flash
+        %a{:class => 'close', :data => {:dismiss => 'alert', :target => ".alert-row"}}
+          &times;
+        .inner-text
+          =flash[:alert]
+
+-if flash and flash[:warning].present?
+  .row.alert-row.fade.in
+    .col-xs-8.col-xs-offset-2
+      .alert.alert-danger.flash
+        %a{:class => 'close', :data => {:dismiss => 'alert', :target => ".alert-row"}}
+          &times;
+        .inner-text
+          =flash[:warning]
+
+-if flash and flash[:validation_errors].present?
+  .row.alert-row.fade.in
+    .col-xs-8.col-xs-offset-2
+      .alert.alert-danger.flash.validation-errors
+        %a{:class => 'close', :data => {:dismiss => 'alert', :target => ".alert-row"}}
+          &times;
+        .inner-text
+          =flash[:validation_errors]
+

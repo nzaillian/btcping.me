@@ -1,0 +1,33 @@
+-# cache [sort_param, page_param, @price_notifications.maximum(:updated_at)] do
+#price-notifications-index
+  .row
+    .col-xs-8.col-xs-offset-2
+      .row
+        .col-xs-12
+          = link_to 'Add Notification', new_price_notification_path, class: 'btn btn-primary pull-right'
+
+      .breaker.md
+
+      %table#price-notifications-table.table.clickable-rows
+        %thead
+          %tr
+            %th= sortable_column 'Above/Below', column: :direction
+            %th= sortable_column 'Price'
+            %th= sortable_column 'Exchange'
+            %th= sortable_column 'Added On', column: :created_at
+
+        %tbody
+          - if @price_notifications.empty?
+            %tr.empty
+              %td{colspan: '4'}
+                You have not yet added any price notifications
+
+          - @price_notifications.each do |price_notification|
+            %tr{data: {url: edit_price_notification_path(price_notification)}}
+              %td= price_notification.direction == :above ? 'Above' : 'Below'
+              %td= number_to_currency price_notification.price
+              %td= price_notification.human_exchange_name
+              %td= price_notification.created_at.to_s(:slashes)
+
+      .pagination-wrap
+        = paginate @price_notifications

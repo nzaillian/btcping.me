@@ -1,0 +1,26 @@
+.row
+  .col-xs-4.col-xs-offset-4
+    .panel.panel-default.session-box
+      .panel-heading
+        %h3.panel-title Sign In
+      .panel-body
+        - merge_params = {}
+
+        - if params[:next].present?
+          - merge_params[:next] = params[:next]          
+      
+        = semantic_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+          = f.semantic_errors
+          = f.inputs do
+            = f.input :email, label: "Email"
+            = f.input :password
+            = hidden_field_tag "next", params[:next]
+          = f.actions do
+            = f.action :submit, label: "Sign In", button_html: {data: {disable_with: "Signing In..."}, class: "btn btn-primary pull-right"}
+
+            = link_to "Forgot your password?", new_password_path(resource_name), class: 'pull-left', class: 'forgot-password sm'
+
+    %p.text-muted.text-center.prompt
+      Don't have an account?
+      = link_to "Sign up", new_user_registration_path(merge_params)
+      today.

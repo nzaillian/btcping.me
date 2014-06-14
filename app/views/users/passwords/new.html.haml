@@ -1,0 +1,18 @@
+.row
+  .col-xs-4.col-xs-offset-4.session-box
+    - if params[:change] == "true"
+      %h4 Set a new password
+      %p Enter your email below and we'll send you a link that will let you securely reset your password
+    - else
+      %h4 Forgot your password?
+    = semantic_form_for resource, as: resource_name, url: password_path(resource_name) do |f|
+      = f.semantic_errors
+      = f.inputs do
+        = f.input :email
+        = hidden_field_tag "next", params[:next]
+        = hidden_field_tag "change", params[:change]
+      = f.actions do
+        = f.action :submit, label: "Send me reset password instructions", button_html: {class: "btn btn-info", data: {disable_with: "Loading..."}}
+
+    .breaker
+    = render "users/shared/links"

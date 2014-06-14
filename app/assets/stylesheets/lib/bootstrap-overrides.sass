@@ -1,0 +1,39 @@
+@import 'common/common'
+
+.table
+  thead tr th 
+    &, & a
+      color: $green_color
+
+  & > thead > tr > th
+    border-bottom: 2px solid $green_color
+
+
+.btn.btn-primary
+  &, &:disabled
+    background-color: $green_color    
+    border-color: $green_color
+
+.navbar-nav > li > .dropdown-menu
+  border-radius: 4px
+
+.pagination-wrap
+  width: 100%
+  text-align: center
+
+.pagination
+  margin: 0 auto
+  
+  .page.active a
+    background-color: $green_color  
+    border-color: $green_color
+    
+    &, &:hover
+      color: #fff
+
+  .page, .next, .last, .prev, .first
+    a
+      color: $green_color
+
+      &:hover
+        color: darken($green_color, 8%)
