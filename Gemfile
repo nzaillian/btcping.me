@@ -42,6 +42,8 @@ gem "font-awesome-rails"
 
 gem 'handles_sortable_columns'
 
+gem 'breadcrumbs_on_rails'
+
 gem 'kaminari'
 
 gem 'kaminari-bootstrap'

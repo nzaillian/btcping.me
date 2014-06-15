@@ -38,4 +38,10 @@
 
     #main-container.container
       = alerts
+      
+      - if  @breadcrumbs.try(:any?)
+        .row
+          .col-xs-8.col-xs-offset-2
+            = render_breadcrumbs builder: ::BootstrapBreadcrumbsBuilder
+
       = yield

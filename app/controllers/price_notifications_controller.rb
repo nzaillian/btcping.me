@@ -3,6 +3,8 @@ class PriceNotificationsController < ApplicationController
 
   before_filter :find_and_authorize_price_notification, only: [:edit, :update, :destroy]
 
+  before_filter :add_breadcrumbs, only: [:edit]
+
   handles_sortable_columns
 
   def index
@@ -58,5 +60,10 @@ class PriceNotificationsController < ApplicationController
   def find_and_authorize_price_notification
     @price_notification = PriceNotification.friendly.find(id_param)
     authorize! :modify, @price_notification
+  end
+
+  def add_breadcrumbs
+    add_breadcrumb('Price Notifications', price_notifications_path)
+    add_breadcrumb('Edit', edit_price_notification_path(@price_notification))
   end
 end

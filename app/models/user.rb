@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   friendly_id :uuid, use: :slugged
   
-  devise :database_authenticatable, :registerable, :recoverable, :validatable,
+  devise :database_authenticatable, :confirmable, :registerable, :recoverable, :validatable,
          authentication_keys: [:email]  
 
   has_many :price_notifications
